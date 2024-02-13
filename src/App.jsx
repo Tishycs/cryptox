@@ -13,10 +13,11 @@ import Exchanges from './components/Exchanges';
 function App() { 
   return (
     <Router>
-      <Header/>
+     
       <Routes>
+         <Header/>
         <Route path="/" element={<Home />} />
-        <Route path="/exchange" element={<Exchanges />} />
+        <Route path="exchange" element={<Exchanges />} />
         <Route path="/coins" element={<Coins />} />
       </Routes>
       <Footer/>
