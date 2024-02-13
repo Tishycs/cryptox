@@ -1,8 +1,5 @@
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route
+  BrowserRouter as Router, Routes, Route
 } from "react-router-dom";
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -11,24 +8,19 @@ import Coins from './components/Coins';
 import Exchanges from './components/Exchanges';
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Header />}> 
-      <Route path="/" element={<Footer/>}>  
-      <Route index element={<Home />} />
-      <Route path="/coins" element={<Coins />} />
-        <Route path='/exchange' element={<Exchanges />} /> 
-    
-    </Route> 
-    
-  ) 
-);
 
 
-function App({routes}) { 
-return (<>
-      <RouterProvider router={router}/>
-    </>
+function App() { 
+  return (
+    <Router>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/exchange" element={<Exchanges />} />
+        <Route path="/coins" element={<Coins />} />
+      </Routes>
+      <Footer/>
+    </Router>
   );
 }
 
