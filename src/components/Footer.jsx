@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <main className='h-40 flex justify-between flex-row bg-black text-white p-2'>
+    <main className='h-40 flex overflow-auto justify-between flex-row bg-black text-white p-2'>
       <div>
         <p>About Us</p>
         <p>

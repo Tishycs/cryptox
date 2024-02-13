@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
   return (
     
-      <nav className='text-white flex flex-row justify-between mb-6 bg-black'>
+      <nav className='text-white flex flex-row justify-between bg-black'>
       <img src="" alt="logo" />
    <ul className='flex flex-row list-none'>
     <li className='p-4 text-l hover:text-blue-600'>Home</li>
