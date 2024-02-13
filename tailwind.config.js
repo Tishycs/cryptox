@@ -12,7 +12,7 @@ export default {
          },
       },
       animation:{
-        vflip:'flipvertical 2s infinite',
+        vflip:'flipvertical 10s infinite',
       } 
     },
   },

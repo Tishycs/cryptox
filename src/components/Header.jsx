@@ -10,7 +10,6 @@ const Header = () => {
     <li className='p-4 text-l hover:text-blue-600'>Exchange</li>
     <li className='p-4 text-l hover:text-blue-600'>Coins</li>
    </ul>
-
    </nav>
    
    
