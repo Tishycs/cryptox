@@ -3,7 +3,7 @@ import axios from "axios";
 import { server } from "../main";
 import ErrorComponent from "./ErrorComponent";
 import Loader from "./Loader";
-import RadioGroup from "./RadioGroup";
+
 
 const Coins = () => {
   const [coins, setCoins] = useState([]);
@@ -12,13 +12,15 @@ const Coins = () => {
   const [page, setPage] = useState(1);
   const [currency, setCurrency] = useState("inr");
 
+  const currencySymbol =
+    currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
+
  const changePage = (page) => {
    setPage(page);
    setLoading(true);
  };
 
- const currencySymbol =
-   currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
+ 
  const btns = new Array(132).fill(1);
 
   useEffect(() => {
@@ -47,31 +49,98 @@ const Coins = () => {
         <Loader />
       ) : (
         <>
-       <RadioGroup/>
-        <div className="m-2 p-2 flex flex-row flex-wrap justify-evenly">
-          {exchanges.map((i) => (
-            <ExchangeCard
-              key={i.id}
-              name={i.name}
-              img={i.image}
-              rank={i.trust_score_rank}
-              url={i.url}
-            />
-          ))}
-        </div>
-         </>
+          <div className="flex flex-row" >
+            <div
+              className="flex items-center me-4"
+              
+            >
+              <input
+                id="inline-radio"
+                type="radio"
+                value={"inr"}
+                name="inline-radio-group"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                htmlFor="₹ IND"
+                className="ms-2 text-sm font-medium text-black "
+              >
+                ₹ IND
+              </label>
+            </div>
+            <div className="flex items-center me-4">
+              <input
+                id="inline-radio"
+                type="radio"
+                value={"eur"}
+                name="inline-radio-group"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                htmlFor="€ EUR"
+                className="ms-2 text-sm font-medium text-black "
+              >
+                € EUR
+              </label>
+            </div>
+            <div className="flex items-center me-4">
+              <input
+                checked
+                id="inline-checked-radio"
+                type="radio"
+                value={"usd"}
+                name="inline-radio-group"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                htmlFor="$ USD"
+                className="ms-2 text-sm font-medium text-black "
+              >
+                $ USD
+              </label>
+            </div>
+          </div>
+
+          <div className="m-2 p-2 flex flex-row flex-wrap justify-evenly">
+            {coins.map((i) => (
+              <CoinsCard
+                id={i.id}
+                key={i.id}
+                price={i.current_price}
+                name={i.name}
+                img={i.image}
+                symbol={i.symbol}
+                url={i.url}
+                currencySymbol={currencySymbol}
+              />
+            ))}
+          </div>
+
+          <div className="flex flex-row w-full overflow-x-auto p-4">
+            {btns.map((item, index) => (
+              <button
+                key={index}
+                className="inline-flex items-center justify-center 
+                 min-w-[2.5rem] p-2 m-2 bg-black text-white rounded-md"
+                onClick={() => changePage(index + 1)}
+              >
+                {index + 1}{" "}
+              </button>
+            ))}
+          </div>
+        </>
       )}
-    </div> 
-   
+    </div>
   );
 };
 
-const ExchangeCard = ({ name, img, rank, url }) => (
-  <a className="block w-56" href={url} target={"blank"}>
+const CoinsCard = ({ id, name, img, symbol, price, currencySymbol = "₹" }) => (
+  <a className="block w-56" href={`/coin/${id}`} target={"blank"}>
     <div className="w-56 shadow-lg  p-10 rounded-lg flex flex-col justify-items-center items-center">
       <img className=" w-10 h-10 object-contain " src={img} alt={"Exchange"} />
-      <h1 className="text-md text-center">{rank}</h1>
+      <h1 className="text-md text-center">{symbol}</h1>
       <p className="text-center line-clamp-1">{name}</p>
+      <p className="text-center line-clamp-1">{price?`${currencySymbol} ${price}`:"NA"}</p> 
     </div>
   </a>
 );
