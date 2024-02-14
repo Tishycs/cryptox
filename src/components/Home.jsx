@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react' 
 import btcImg from '../assets/bitcoin.png'  
 const Home = () => {  
   return (
@@ -6,7 +6,7 @@ const Home = () => {
       <div className="h-[80vh] ">
         <img
           className="animate-vflip w-full h-full object-contain  }"
-          src={btcImg}
+          src={btcImg}     
           alt="bitcoin"
         />
       </div>

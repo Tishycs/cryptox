@@ -6,21 +6,27 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Coins from './components/Coins';
 import Exchanges from './components/Exchanges';
+import RadioGroup from "./components/RadioGroup";
 
 
 
 
 function App() { 
   return (
-    <Router>
+  <>
      <Header/>
+       <Router>
+        
       <Routes>
-         <Route exact path="/" element={<Home />} />
-        <Route exact path="/exchange" element={<Exchanges />} />
-        <Route exact path="/coins" element={<Coins />} />
+         <Route  path="/" element={<Home />} />
+        <Route  path="/exchange" element={<Exchanges />} />
+        <Route  path="/coins" element={<Coins />} />
+        <Route  path="/radio" element={<RadioGroup />} />
       </Routes> 
+      
+      </Router> 
       <Footer/>
-    </Router>
+    </>
   );
 }
 
