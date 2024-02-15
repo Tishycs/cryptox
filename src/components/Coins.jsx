@@ -5,6 +5,7 @@ import ErrorComponent from "./ErrorComponent";
 import Loader from "./Loader";
 
 
+
 const Coins = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,10 +50,11 @@ const Coins = () => {
         <Loader />
       ) : (
         <>
-          <div className="flex flex-row" >
+          <div className="flex flex-row">
             <div
               className="flex items-center me-4"
-              
+              // value={currency}
+              // onChange={setCurrency}
             >
               <input
                 id="inline-radio"
@@ -68,7 +70,11 @@ const Coins = () => {
                 ₹ IND
               </label>
             </div>
-            <div className="flex items-center me-4">
+            <div
+              className="flex items-center me-4"
+              // value={currency}
+              // onChange={setCurrency}
+            >
               <input
                 id="inline-radio"
                 type="radio"
@@ -83,7 +89,11 @@ const Coins = () => {
                 € EUR
               </label>
             </div>
-            <div className="flex items-center me-4">
+            <div
+              className="flex items-center me-4"
+              // value={currency}
+              // onChange={setCurrency}
+            >
               <input
                 checked
                 id="inline-checked-radio"
@@ -123,7 +133,7 @@ const Coins = () => {
                 className="inline-flex items-center justify-center 
                  min-w-[2.5rem] p-2 m-2 bg-black text-white rounded-md"
                 onClick={() => changePage(index + 1)}
-              >
+              > 
                 {index + 1}{" "}
               </button>
             ))}

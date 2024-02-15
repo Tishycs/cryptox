@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Coins from './components/Coins';
 import Exchanges from './components/Exchanges';
-import RadioGroup from "./components/RadioGroup";
+import Coindetails from "./components/Coindetails";
 
 
 
@@ -21,7 +21,9 @@ function App() {
          <Route  path="/" element={<Home />} />
         <Route  path="/exchange" element={<Exchanges />} />
         <Route  path="/coins" element={<Coins />} />
-        <Route  path="/radio" element={<RadioGroup />} />
+        <Route  path="/coinsdetails" element={<Coindetails />} />
+        
+       
       </Routes> 
       
       </Router> 
