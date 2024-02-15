@@ -11,7 +11,7 @@ const Coindetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [currency, setCurrency] = useState("inr");
-  const [days, setDays] = useState("24h");
+  const [days, setDays] = useState("24h"); 
   const [chartArray, setChartArray] = useState([]);
 
   const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "1y", "max"];
@@ -141,14 +141,23 @@ const Coindetails = () => {
             </div>
           </div>
 
-          <div>
+          <div className="w-full border-1">
             <Chart arr={chartArray} currency={currencySymbol} days={days} />
           </div>
-
-
+          <div className="flex flex-row p-4 overflow-x-auto">
+            {btns.map((i) => (
+              <button
+                disabled={days === i}
+                key={i}
+                onClick={() => switchChartStats(i)}
+              >
+                {i}
+              </button> 
+            ))}
+          </div>
 
           <div className="flex flex-col content-between items-start m-4 rounded-lg">
-            <p className="text-sm text-center opacity-[0.7]"> 
+            <p className="text-sm text-center opacity-[0.7]">
               Last Updated On{" "}
               {Date(coin.market_data.last_updated).split("G")[0]}
             </p>
@@ -159,7 +168,7 @@ const Coindetails = () => {
               className="w-16 h-16 object-contain"
             />
 
-            <h1>{coin.name}</h1>
+            <p>{coin.name}</p>
 
             <p>
               <span>{currencySymbol}</span>

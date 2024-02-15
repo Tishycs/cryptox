@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 import { server } from "../main";
 import ErrorComponent from "./ErrorComponent";
 import Loader from "./Loader";
+import CoinCard from "./CoinCard";
 
 
 
@@ -113,7 +115,7 @@ const Coins = () => {
 
           <div className="m-2 p-2 flex flex-row flex-wrap justify-evenly">
             {coins.map((i) => (
-              <CoinsCard
+              <CoinCard
                 id={i.id}
                 key={i.id}
                 price={i.current_price}
@@ -144,15 +146,5 @@ const Coins = () => {
   );
 };
 
-const CoinsCard = ({ id, name, img, symbol, price, currencySymbol = "₹" }) => (
-  <a className="block w-56" href={`/coin/${id}`} target={"blank"}>
-    <div className="w-56 shadow-lg  p-10 rounded-lg flex flex-col justify-items-center items-center">
-      <img className=" w-10 h-10 object-contain " src={img} alt={"Exchange"} />
-      <h1 className="text-md text-center">{symbol}</h1>
-      <p className="text-center line-clamp-1">{name}</p>
-      <p className="text-center line-clamp-1">{price?`${currencySymbol} ${price}`:"NA"}</p> 
-    </div>
-  </a>
-);
 
 export default Coins;

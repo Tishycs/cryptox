@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Coins from './components/Coins';
 import Exchanges from './components/Exchanges';
-import Coindetails from "./components/Coindetails";
+
 
 
 
@@ -20,8 +20,8 @@ function App() {
       <Routes>
          <Route  path="/" element={<Home />} />
         <Route  path="/exchange" element={<Exchanges />} />
-        <Route  path="/coins" element={<Coins />} />
-        <Route  path="/coinsdetails" element={<Coindetails />} />
+        <Route  path="/coins" element={<Coins />} /> 
+        
         
        
       </Routes> 
