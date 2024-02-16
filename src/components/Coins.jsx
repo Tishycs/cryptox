@@ -7,7 +7,6 @@ import Loader from "./Loader";
 import CoinCard from "./CoinCard";
 
 
-
 const Coins = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,8 +54,8 @@ const Coins = () => {
           <div className="flex flex-row">
             <div
               className="flex items-center me-4"
-              // value={currency}
-              // onChange={setCurrency}
+              value={currency}
+              onChange={setCurrency}
             >
               <input
                 id="inline-radio"
@@ -74,8 +73,8 @@ const Coins = () => {
             </div>
             <div
               className="flex items-center me-4"
-              // value={currency}
-              // onChange={setCurrency}
+              value={currency}
+              onChange={setCurrency}
             >
               <input
                 id="inline-radio"
@@ -93,8 +92,8 @@ const Coins = () => {
             </div>
             <div
               className="flex items-center me-4"
-              // value={currency}
-              // onChange={setCurrency}
+              value={currency}
+              onChange={setCurrency}
             >
               <input
                 checked
@@ -122,9 +121,9 @@ const Coins = () => {
                 name={i.name}
                 img={i.image}
                 symbol={i.symbol}
-                url={i.url}
-                currencySymbol={currencySymbol}
-              />
+                url={i.url} 
+                currencySymbol={currencySymbol} 
+              />  
             ))}
           </div>
 
@@ -134,8 +133,8 @@ const Coins = () => {
                 key={index}
                 className="inline-flex items-center justify-center 
                  min-w-[2.5rem] p-2 m-2 bg-black text-white rounded-md"
-                onClick={() => changePage(index + 1)}
-              > 
+                onChange={() => changePage(index + 1)}
+              >
                 {index + 1}{" "}
               </button>
             ))}

@@ -66,7 +66,7 @@ const Coindetails = () => {
     const fetchCoin = async () => {
       try {
         const { data } = await axios.get(`${server}/coins/${params.id}`);
-
+                         
         const { data: chartData } = await axios.get(
           `${server}/coins/${params.id}/market_chart?vs_currency=${currency}&days=${days}`
         );
@@ -92,7 +92,8 @@ const Coindetails = () => {
         <Loader />
       ) : (
         <>
-          <div className="flex flex-row">
+          <div className="flex flex-row"
+          value={currency} onChange={setCurrency}>
             <div className="flex items-center me-4">
               <input
                 id="inline-radio"
