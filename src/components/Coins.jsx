@@ -49,7 +49,7 @@ const Coins = () => {
     <div className="max-w-[80em] m-auto p-auto">
       {loading ? (
         <Loader />
-      ) : (
+      ) : ( 
         <>
           <div className="flex flex-row">
             <div
@@ -133,7 +133,7 @@ const Coins = () => {
                 key={index}
                 className="inline-flex items-center justify-center 
                  min-w-[2.5rem] p-2 m-2 bg-black text-white rounded-md"
-                onChange={() => changePage(index + 1)}
+                onClick={() => changePage(index + 1)}
               >
                 {index + 1}{" "}
               </button>
