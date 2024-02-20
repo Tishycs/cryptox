@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import { server } from "../main";
 import axios from "axios";
-import ErrorComponent from "./ErrorComponent";  
+import ErrorComponent from "./ErrorComponent"; 
+import redarrow from "../assets/redarrow.png";
+import greenarrow from "../assets/greenarrow.png";
 
 const Coindetails = () => {
   const [coin, setCoin] = useState({});
@@ -91,9 +93,12 @@ const Coindetails = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <div className="flex flex-row"
-          value={currency} onChange={setCurrency}>
+        <> 
+          <div
+            className="flex flex-row"
+            value={currency}
+            onChange={setCurrency}
+          > 
             <div className="flex items-center me-4">
               <input
                 id="inline-radio"
@@ -116,7 +121,7 @@ const Coindetails = () => {
                 value={"eur"}
                 name="inline-radio-group"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
+              /> 
               <label
                 htmlFor="€ EUR"
                 className="ms-2 text-sm font-medium text-black "
@@ -153,15 +158,15 @@ const Coindetails = () => {
                 onClick={() => switchChartStats(i)}
               >
                 {i}
-              </button> 
+              </button>
             ))}
           </div>
 
-          <div className="flex flex-col content-between items-start m-4 rounded-lg">
-            <p className="text-sm text-center opacity-[0.7]">
-              Last Updated On{" "}
+          <div className="flex flex-col items-start m-4 p-2 rounded-lg">
+            <p className="text-sm self-center text-center opacity-[0.7]">
+              Last Updated On{" "} 
               {Date(coin.market_data.last_updated).split("G")[0]}
-            </p>
+            </p> 
 
             <img
               src={coin.image.large}
@@ -169,7 +174,7 @@ const Coindetails = () => {
               className="w-16 h-16 object-contain"
             />
 
-            <p>{coin.name}</p>
+            <p className="font-bold text-xl">{coin.name}</p>
 
             <p>
               <span>{currencySymbol}</span>
@@ -178,20 +183,25 @@ const Coindetails = () => {
 
             <p>
               <span>
-                type=
-                {coin.market_data.market_cap_change_24h > 0
-                  ? "increase"
-                  : "decrease"}
+                {coin.market_data.market_cap_change_24h > 0 ? (
+                  <img src={greenarrow} className="inline max-w-[1%] " />
+                ) : ( 
+                  <img src={redarrow} className="inline max-w-[1%]" />
+                )}
               </span>
               <span> {coin.market_data.market_cap_change_24h}</span>
             </p>
 
-            <h1> {`#${coin.market_cap_rank}`} </h1>
+            <h1 className="font-bold text-2xl bg-black rounded-sm text-white p-2">            
+              {`#${coin.market_cap_rank}`}
+            </h1>
 
-            <CustomBar
-              high={`${currencySymbol}${coin.market_data.high_24h[currency]}`}
-              low={`${currencySymbol}${coin.market_data.low_24h[currency]}`}
-            />
+            <div className="flex flex-col items-center w-full">
+              <CustomBar
+                high={`${currencySymbol}${coin.market_data.high_24h[currency]}`}
+                low={`${currencySymbol}${coin.market_data.low_24h[currency]}`}
+              />
+            </div>
 
             <div className="w-full p-4">
               <Item title={"Max Supply"} value={coin.market_data.max_supply} />
@@ -216,6 +226,7 @@ const Coindetails = () => {
                 value={`${currencySymbol}${coin.market_data.ath[currency]}`}
               />
             </div>
+
           </div>
         </>
       )}
@@ -233,15 +244,20 @@ const Item = ({ title, value }) => (
 
 const CustomBar = ({ high, low }) => (
   <>
-    <div className="w-full" value={50}></div>
+    <div className=" w-full h-4 mt-2 mb-4 bg-gray-200">
+      <div 
+        className="h-4 bg-teal-500
+        w-[50%]" 
+      ></div> 
+    </div>
 
-    <div className="flex flow-row">
-      <span className=" bg-red-400 text-red-600"> children={low}</span>
-      
-      <p className="text-sm">24H Range</p>
+    <div className="p-1 flex flow-row">
+      <span className=" bg-red-200 text-red-900">{low}</span>
 
-      <span className="bg-green-200 text-green-600">children={high}</span>
-    </div> 
+      <p className="text-sm"> 24H Range </p>
+
+      <span className="bg-green-200 text-green-900">{high}</span>
+    </div>
   </>
 );
 

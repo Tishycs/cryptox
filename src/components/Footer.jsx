@@ -2,7 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <main className='h-40 flex overflow-auto justify-between flex-row bg-black text-white p-2'>
+    <main className="h-40 flex overflow-auto justify-between flex-row
+    bg-[#061121] text-white p-2">
       <div>
         <p>About Us</p>
         <p>
@@ -12,7 +13,7 @@ const Footer = () => {
       </div>
 
       <div>
-        <p className='mt-[8rem] text-sm'>©2024,CryptoX,Inc.</p>
+        <p className="mt-[8rem] text-sm">©2024,CryptoX,Inc.</p>
       </div>
 
       <div>
