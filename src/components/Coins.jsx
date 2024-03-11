@@ -48,7 +48,7 @@ const Coins = () => {
   return (
     <div className="max-w-full bg-[#010118]">
       <div className="max-w-[80em] m-auto p-auto ">
-        {loading ? ( 
+        {loading ? (  
           <Loader />
         ) : (
           <>

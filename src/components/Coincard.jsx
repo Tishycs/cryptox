@@ -17,7 +17,7 @@ const CoinCard = ({ id, name, img, symbol, price, currencySymbol = "₹" }) => (
       <img className=" w-10 h-10 object-contain " src={img} alt={"Exchange"} />
       <h1 className="text-md text-center font-bold">{symbol}</h1>
       <p className="text-center line-clamp-1 font-semibold">{name}</p>
-      <p className="text-center line-clamp-1">
+      <p className="text-center line-clamp-1"> 
         {price ? `${currencySymbol} ${price}` : "NA"}
       </p>
     </div>
